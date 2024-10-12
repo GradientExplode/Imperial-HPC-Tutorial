@@ -73,6 +73,8 @@ In high-performance computing (HPC), a scheduler is typically used to manage res
 
 Once submitted, you have no further control over the job, unless you choose to remove it from the queue.
 
+If you're not sure how to create a file in Linux, please check out this guide: https://www.freecodecamp.org/news/vim-beginners-guide/
+
 ### Example Job Files
 
 #### CPU Job Example:
