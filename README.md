@@ -135,3 +135,38 @@ Different clusters have varying GPU models available. Here's a table showing whi
 | HX1          | A100                |
 
 
+
+## Step 3: Submitting a Job
+
+### Where are my jobs submitted to?
+The cluster administrator has configured various queues to accommodate different types of tasks. When you submit a job, the scheduler automatically selects the most appropriate queue based on the resources you specify in the job file.
+
+### Job Submission Example:
+To submit a job, use the following command:
+
+```bash
+qsub /rds/general/user/username/home/job.sh
+```
+
+- `qsub` is the command used to submit the job.
+- `/rds/general/user/username/home/job.sh` represents the path to your job file.
+
+### Checking the Status of Your Job:
+After submitting your job, you can check its status in the queue by running the following command:
+
+```bash
+qstat
+```
+
+### Deleting a Job:
+If you need to cancel a job, use the following command:
+
+```bash
+qdel -Wforce <job_id>
+```
+
+Replace `<job_id>` with the actual ID of the job you want to delete. For example:
+
+```bash
+qdel -Wforce 123456
+```
