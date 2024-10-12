@@ -171,7 +171,7 @@ Replace `<job_id>` with the actual ID of the job you want to delete. For example
 qdel -Wforce 123456
 ```
 
-### Step 4 - Retrieve Your Data
+## Step 4 - Retrieve Your Data
 
 Once your job has finished, you need to copy the results to your RDS (add this step to your job file before submitting the job). Keep in mind that the data on the local disk will be removed immediately after the job completes.
 
