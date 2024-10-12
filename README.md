@@ -12,6 +12,9 @@
 **Q: Is it difficult to learn how to use?**  
 **A:** No, it is relatively straightforward. The main thing you need to learn is how to use a few simple Linux commands.
 
+**Q: Why can't I access HPC from outside the campus?**  
+**A:** HPC is an internal service. To access the HPC from outside the campus, you need to use ZPA or VPN. Please follow the instructions here: https://icl-rcs-user-guide.readthedocs.io/en/latest/remoteaccess/
+
 ## Tutorial
 Imperial College operates three main HPC clusters:
 - **CX3**
