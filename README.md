@@ -64,3 +64,72 @@ SSH (Secure Shell) sets up remote, encrypted connections between devices over un
 2. Type `ssh username@login.hpc.imperial.ac.uk` (replace `username` with your short college username) and press Enter.
 3. Type `yes` to accept the fingerprint.
 4. Enter your college password when prompted.
+
+## Step 2 - Creating a Job File
+
+### What is a Job File?
+
+In high-performance computing (HPC), a scheduler is typically used to manage resources. When you submit a job to the queue, it waits there until the required resources become available. The job file you create is essentially a shell script that specifies the resources you need and outlines the workflow you want to execute.
+
+Once submitted, you have no further control over the job, unless you choose to remove it from the queue.
+
+### Example Job Files
+
+#### CPU Job Example:
+```bash
+#!/bin/bash
+#PBS -l select=1:ncpus=1:mem=1gb
+#PBS -l walltime=00:01:00
+#PBS -N hello_world
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+
+myprog path/to/input.txt
+```
+
+#### GPU Job Example:
+```bash
+#!/bin/bash
+#PBS -l select=1:ncpus=4:mem=24gb:ngpus=1:gpu_type=RTX6000
+#PBS -l walltime=00:01:00
+#PBS -N hello_world
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+
+myprog path/to/input.txt
+```
+
+### Explanation of the Job File Elements
+
+- `#PBS -l select=1:ncpus=1:mem=1gb`: Specifies the resources your job requires. 
+  - `select` indicates the number of nodes (server nodes) you need.
+  - `ncpus` is the number of CPU cores.
+  - `mem` specifies the amount of memory (RAM).
+
+- For a GPU job, an additional line like `#PBS -l select=1:ncpus=4:mem=24gb:ngpus=1:gpu_type=RTX6000` is used. 
+  - `ngpus` defines the number of GPUs needed.
+  - `gpu_type` defines the specific GPU model.
+
+- `#PBS -l walltime=00:01:00`: Defines the maximum runtime of the job. If the job exceeds this time (in the format `hh:mm:ss`), it will be forcibly terminated by the system.
+
+- `#PBS -N hello_world`: Assigns a name to your job, which will appear in the job queue.
+
+- `module load tools/prod`: Loads essential tools for your job. It's recommended to include this line in all job files.
+
+- `myprog.py path/to/input.txt`: This line executes your Python program.
+
+### GPU Types for Different Clusters
+
+Different clusters have varying GPU models available. Here's a table showing which GPU models can be used on specific clusters:
+
+| Cluster      | GPU Models          |
+|--------------|---------------------|
+| CX3          | RTX6000             |
+| CX3-Phase 2  | L40S, A100, A40     |
+| HX1          | A100                |
+
+
