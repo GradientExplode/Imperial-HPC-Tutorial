@@ -170,3 +170,17 @@ Replace `<job_id>` with the actual ID of the job you want to delete. For example
 ```bash
 qdel -Wforce 123456
 ```
+
+### Step 4 - Retrieve Your Data
+
+Once your job has finished, you need to copy the results to your RDS (add this step to your job file before submitting the job). Keep in mind that the data on the local disk will be removed immediately after the job completes.
+
+There are three main ways to access your data:
+
+- **Globus**  
+- **Rclone**  
+- **rsync** and **scp**
+
+If you're not comfortable using the command line, it's best to use **Globus** (recommended). Otherwise, you can use **rsync** or **scp**. For these, you'll need to log in to the special data transfer node: `dtn-b.hpc.ic.ac.uk`.
+
+For more details, refer to the [RCS User Guide](https://icl-rcs-user-guide.readthedocs.io/en/latest/rds/transferringdata/).
